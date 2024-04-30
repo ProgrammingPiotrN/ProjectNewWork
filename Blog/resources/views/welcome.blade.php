@@ -21,7 +21,7 @@
 
     </head>
 
-    <body class="bg-gray-200">
+    <body class="bg-gray-200 flex flex-col justify-between min-h-screen">
 
         <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
             <div class="flex justify-between items-center">
@@ -70,8 +70,14 @@
             </ul>
         </nav>
 
-        <footer>
-
+        <footer class="bg-white py-0">
+            <div class="p-10 text-black">
+                <div class="max-w-7xl mx-auto text-center">
+                    <div class="mb-5">
+                        Copyright & Designed by <a href="https://github.com/ProgrammingPiotrN"><strong><span>Piotr Nawrocki</span></strong></a>. All Rights Reserved
+                    </div>
+                </div>
+            </div>
         </footer>
 
     </body>
