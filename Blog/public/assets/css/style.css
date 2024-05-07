@@ -4,3 +4,8 @@ html, body {
 .container {
     min-height: 100%;
 }
+
+.centered-image img {
+    max-width: 100%;
+    height: auto;
+}

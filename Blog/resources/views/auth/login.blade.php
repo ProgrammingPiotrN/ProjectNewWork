@@ -4,7 +4,7 @@
     <div class="w-full max-w-md space-y-8">
         <div class="bg-white shadow-md rounded-md p-6">
 
-            <img class="mx-auto h-10 w-auto" src="{{ asset('assets/img/logo.png') }}" alt="" />
+            <img class="mx-auto h-24 w-auto" src="{{ asset('assets/img/logo.png') }}" alt="" />
 
             <h2 class="my-3 text-center text-3xl font-bold tracking-tight text-gray-900">
                 Login

@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Blog IT</title>
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
@@ -27,21 +27,21 @@
             <div class="flex justify-between items-center">
                 <span class="text-2xl font-[Poppins] cursor-pointer">
                     Blog IT
-                    <img class="h-16 inline" src="{{ asset('assets/img/logo.png') }}" alt="Logo">
+                    <img class="h-20 inline" src="{{ asset('assets/img/logo.png') }}" alt="Logo">
                 </span>
                 <span class="text-3xl cursor-pointer mx-2 md:hidden block">
                     <ion-icon name="menu-outline" onclick="Menu(this)"></ion-icon>
                 </span>
             </div>
 
-            <div class="flex justify-center w-100 items-center">
+            {{-- <div class="flex justify-center w-100 items-center">
                 <span class="text-3xl cursor-pointer mx-2   flex justify-between">
                     <ion-icon name="chatbox-outline" class="text-5xl"></ion-icon>
                 </span>
                 <span class="text-3xl cursor-pointer mx-2   flex justify-between">
                     <ion-icon name="search-circle-outline" class="text-5xl"></ion-icon>
                 </span>
-            </div>
+            </div> --}}
 
             <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto
             md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
@@ -77,6 +77,23 @@
 
             </ul>
         </nav>
+
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row items-center justify-center">
+                <div class="md:w-1/2 pr-8">
+                    <img src="{{ asset('assets/img/welcome.jpg') }}" alt="Your Image" class="centered-image">
+                </div>
+                <div class="md:w-1/2 p-8">
+                    <p class="text-left md:text-left text-lg">
+                        Welcome to Blog IT.
+                        Here you will find the
+                        answer to every question
+                        from the IT world and the solution
+                        to the problem. Share your knowledge.
+                    </p>
+                </div>
+            </div>
+        </div>
 
         <footer class="bg-white py-0">
             <div class="p-10 text-black">
