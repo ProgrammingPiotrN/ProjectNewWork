@@ -26,8 +26,7 @@
         <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
             <div class="flex justify-between items-center">
                 <span class="text-2xl font-[Poppins] cursor-pointer">
-                    Blog IT
-                    <img class="h-20 inline" src="{{ asset('assets/img/logo.png') }}" alt="Logo">
+                    <img class="h-24 inline" src="{{ asset('assets/img/logo.png') }}" alt="Logo">
                 </span>
                 <span class="text-3xl cursor-pointer mx-2 md:hidden block">
                     <ion-icon name="menu-outline" onclick="Menu(this)"></ion-icon>
@@ -103,12 +102,18 @@
                     </div>
                 </div>
             </div>
+
+            <button id="scrollToTopBtn" class="fixed bottom-10 right-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded">
+                <ion-icon name="arrow-up-outline"></ion-icon>
+            </button>
         </footer>
 
     </body>
 </html>
 
 <script src="{{ asset('assets/js/menu.js') }}"></script>
+<script src="{{ asset('assets/js/button-scroll.js') }}"></script>
+
 
 
 
