@@ -38,7 +38,7 @@
 
                 <div>
                     <button type="submit"
-                        class="flex w-full justify-center rounded-md border border-transparent bg-blue py-2 px-4 text-sm font-medium text-black shadow-sm hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-2">Login
+                        class="flex w-full justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-black shadow-sm hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-2">Login
                         </button>
                 </div>
             </form>
