@@ -8,7 +8,7 @@
         <title>Blog IT</title>
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
         <!-- Fonts -->
@@ -33,17 +33,8 @@
                 </span>
             </div>
 
-            {{-- <div class="flex justify-center w-100 items-center">
-                <span class="text-3xl cursor-pointer mx-2   flex justify-between">
-                    <ion-icon name="chatbox-outline" class="text-5xl"></ion-icon>
-                </span>
-                <span class="text-3xl cursor-pointer mx-2   flex justify-between">
-                    <ion-icon name="search-circle-outline" class="text-5xl"></ion-icon>
-                </span>
-            </div> --}}
-
             <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto
-            md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+                md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
 
                     @if (Route::has('login'))
                         @auth
@@ -68,9 +59,6 @@
                             @endif
                         @endauth
                     @endif
-
-
-
             </ul>
         </nav>
 
