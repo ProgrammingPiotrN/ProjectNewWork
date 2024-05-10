@@ -21,8 +21,8 @@ Route::middleware('auth')->group(function () {
 });
 
 //Post blog
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store')->middleware('auth');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create')->middleware('auth');
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show')->middleware('auth');
 
 require __DIR__.'/auth.php';
