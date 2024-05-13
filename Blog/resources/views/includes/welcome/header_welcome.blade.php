@@ -16,33 +16,33 @@
                     <a href="{{ url('/dashboard') }}" class="text-xl hover:text-blue-500 duration-500">
                         Dashboard
                     </a>
-                    @else
-                    <li class="mx-4 my-6 md:my-0">
-                        <a href="{{ route('login') }}" class="text-xl hover:text-blue-500 duration-500">
-                            Log in
-                        </a>
-                    </li>
+                @else
+                <li class="mx-4 my-6 md:my-0">
+                    <a href="{{ route('login') }}" class="text-xl hover:text-blue-500 duration-500">
+                        Log in
+                    </a>
+                </li>
 
 
                     @if (Route::has('register'))
-                    <li class="mx-4 my-6 md:my-0">
-                        <a  href="{{ route('register') }}" class="text-xl hover:text-blue-500 duration-500">
-                        Register
-                        </a>
-                    </li>
+                        <li class="mx-4 my-6 md:my-0">
+                            <a  href="{{ route('register') }}" class="text-xl hover:text-blue-500 duration-500">
+                            Register
+                            </a>
+                        </li>
+
                     @endif
                 @endauth
-
-                <li class="mx-4 my-6 md:my-0">
-                    <a href="{{ route('posts.create') }}" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Create post</a>
-                </li>
-
-                <li class="mx-4 my-6 md:my-0">
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit">Log out</button>
-                    </form>
-                </li>
             @endif
     </ul>
 </nav>
+
+<script>
+    function Menu(e){
+        let list = document.querySelector('ul');
+
+        e.name === 'menu' ? (e.name = "close", list.classList.add('top-[80px]'),
+        list.classList.add('opacity-100')) :(e.name = "menu", list.classList.remove('top-[80px]'),
+        list.classList.remove('opacity-100'))
+    }
+</script>

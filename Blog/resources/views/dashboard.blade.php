@@ -8,8 +8,8 @@
         <title>Blog IT</title>
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -23,7 +23,7 @@
 
     <body class="bg-gray-200 flex flex-col justify-between min-h-screen">
 
-        @include('includes.header')
+        @include('includes.dashboard.header')
 
         <div class="container mx-auto px-4 py-6">
             @if (session()->has('success'))
@@ -35,28 +35,12 @@
             @endif
         </div>
 
-        <footer class="bg-white py-0">
-            <div class="p-10 text-black">
-                <div class="max-w-7xl mx-auto text-center">
-                    <div class="mb-5">
-                        Copyright & Designed by <a href="https://github.com/ProgrammingPiotrN"><strong><span>Piotr Nawrocki</span></strong></a>. All Rights Reserved
-                    </div>
-                </div>
-            </div>
-
-            <button id="scrollToTopBtn" class="fixed bottom-10 right-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded">
-                <ion-icon name="arrow-up-outline"></ion-icon>
-            </button>
-        </footer>
-
-
-
+        @include('includes.footer')
 
     </body>
 </html>
 
-<script src="{{ asset('assets/js/menu.js') }}"></script>
-<script src="{{ asset('assets/js/button-scroll.js') }}"></script>
+
 
 
 

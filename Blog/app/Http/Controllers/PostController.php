@@ -37,4 +37,14 @@ class PostController extends Controller
         return view('posts.show', ['post' => $post]);
     }
 
+    public function delete(Post $post){
+
+        $post->delete();
+
+        $userId = Auth::id();
+
+        return redirect()->route('profile', ['user' => $userId])->with('success', 'Post deleted successfully');
+
+    }
+
 }
