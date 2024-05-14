@@ -1,5 +1,5 @@
 
-<nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between relative">
+<nav class="p-5 bg-white shadow-md md:flex md:items-center md:justify-between relative">
     <div class="flex justify-between items-center">
         <span class="text-2xl font-Poppins cursor-pointer">
             <img class="h-24 inline" src="{{ asset('assets/img/logo.png') }}" alt="Logo">

@@ -3,29 +3,38 @@
 
 @include('includes.dashboard.header')
 
-<div class="container py-5 container--narrow lg:w-1/2 mx-auto pl-0 pt-12 lg:pl-20">
-    <h2 class="flex items-center lg:pl-24 pl-24">
-        <img class="avatar-small rounded-full w-24 h-24 lg:w-32 lg:h-32 pl-2" src="https://gravatar.com/avatar/b9408a09298632b5151200f3449434ef?s=128" alt="Avatar" />
-        <span class="text-xl pl-4">{{ Auth::user()->username }}</span>
-        <button class="btn btn-primary btn-sm border-2 border-black text-black flex items-center ml-4 pl-4">
-            Follow
-            <i class="fas fa-user-plus ml-1"></i>
-            <!-- Jeśli ikona używa elementu ion-icon -->
-            <ion-icon name="add-outline" class="ml-1 pr-4"></ion-icon>
-        </button>
-    </h2>
+<div class="container py-7 container--narrow lg:w-1/2 mx-auto pl-0 pt-12 lg:pl-20">
 
-    <div class="profile-nav flex pt-4 mb-4 space-x-4 lg:pl-24 pl-24">
+    <div class="profile-nav flex pt-4 mb-4 space-x-4 lg:pl-24 pl-4"> <!-- Zmniejszono lewy padding na małych ekranach -->
         <a href="#" class="profile-nav-link nav-item nav-link active border border-black rounded px-2 py-1">Posts: {{ $count }}</a>
         <a href="#" class="profile-nav-link nav-item nav-link border border-black rounded px-2 py-1">Followers: 3</a>
         <a href="#" class="profile-nav-link nav-item nav-link border border-black rounded px-2 py-1">Following: 2</a>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div class="flex items-center lg:pl-24 pl-4"> <!-- Zmniejszono lewy padding na małych ekranach -->
+        <img class="avatar-small rounded-full w-24 h-24 lg:w-32 lg:h-32 pl-2" src="{{ asset('storage/user_photo/' . auth()->user()->user_photo) }}" alt="Avatar" /> <!-- Dostosowano rozmiar zdjęcia avataru -->
+        <span class="text-xl pl-4">{{ Auth::user()->username }}</span>
+        <form method="post" action="#" class="flex items-center ml-auto"> <!-- Przesunięto formularz do prawej strony -->
+            @csrf
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center mr-4" style="z-index: 999;"> <!-- Zmieniono margines na mr-4 -->
+                Follow
+                <i class="fas fa-user-plus ml-1"></i>
+                <!-- Jeśli ikona używa elementu ion-icon -->
+                <ion-icon name="add-outline" class="ml-1"></ion-icon>
+            </button>
+            @if(auth()->check())
+                <a href="{{ route('photo') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center ml-4 md:ml-0" style="z-index: 999;">
+                    Manage Avatar
+                </a>
+            @endif
+        </form>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         @foreach ($posts as $post)
             <a href="/posts/{{ $post->id }}" class="list-group-item bg-white shadow-md rounded-md overflow-hidden">
                 <div class="flex items-center px-4 py-3">
-                    <img class="avatar-tiny rounded-full w-8 h-8" src="https://gravatar.com/avatar/b9408a09298632b5151200f3449434ef?s=128" alt="Avatar" />
+                    <img class="avatar-tiny rounded-full w-8 h-8" src="{{ asset('storage/user_photo/' . auth()->user()->user_photo) }}" alt="Avatar" />
                     <strong class="ml-2">{{ $post->title }}</strong>
                 </div>
                 <div class="px-4 py-3 border-t border-gray-200">

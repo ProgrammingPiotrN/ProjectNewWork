@@ -4,7 +4,7 @@
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-<footer class="bg-white py-0">
+<footer class="bg-white py-4 md:py-10">
     <div class="p-10 text-black">
         <div class="max-w-7xl mx-auto text-center">
             <div class="mb-5">
