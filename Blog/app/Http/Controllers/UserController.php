@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,10 +12,13 @@ use Intervention\Image\Drivers\Gd\Driver;
 
 class UserController extends Controller
 {
-    public function profile_user(User $user){
+    public function profile_user(Request $request, User $user){
 
-        return view('includes.dashboard.profile_user', ['user_photo' => $user->user_photo ,'auth' => $user->username, 'posts' => $user->posts()->latest()->get(),
-            'count' => $user->posts()->count() ]);
+        return view('includes.dashboard.profile_user', [
+            'user_photo' => $user->user_photo,
+            'auth' => $user->username,
+            'posts' => $user->posts()->latest()->paginate(6)
+        ]);
 
     }
 

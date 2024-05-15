@@ -1,9 +1,13 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\PublicPostController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,8 +34,19 @@ Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.e
 Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update')->middleware('auth');
 
 //Profile
-Route::get('/profile/{user}', [UserController::class, 'profile_user'])->name('profile');
+Route::get('/profile/{user}', [UserController::class, 'profile_user'])->name('profile')->middleware('auth');
 Route::get('/manage-photo', [UserController::class, 'manage'])->name('photo')->middleware('auth');
 Route::post('/manage-photo', [UserController::class, 'store_photo'])->name('store.photo')->middleware('auth');
+
+//Welcome post
+Route::get('/posts', [PublicPostController::class, 'index'])->name('welcome.posts')->middleware('guest');
+
+//Dashboard post
+Route::get('/dashboard-posts', [DashboardController::class, 'index'])->name('dashboard.posts')->middleware('auth');
+
+//Comments & likes
+Route::post('/comments', [CommentController::class, 'store'])->name('comments')->middleware('auth');
+Route::post('/likes', [LikeController::class, 'store'])->name('likes.store')->middleware('auth');
+
 
 require __DIR__.'/auth.php';

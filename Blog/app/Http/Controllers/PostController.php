@@ -39,24 +39,37 @@ class PostController extends Controller
 
     public function delete(Post $post)
     {
+        // Sprawdź, czy zalogowany użytkownik jest właścicielem postu
+        if ($post->user_id != auth()->id()) {
+            // Użytkownik nie jest właścicielem postu, zwróć błąd 403 (Brak uprawnień)
+            abort(403, 'Unauthorized action. You do not have permission to delete this post.');
+        }
 
+        // Usuń post
         $post->delete();
 
-        $userId = Auth::id();
-
-        return redirect()->route('profile', ['user' => $userId])->with('success', 'Post deleted successfully');
-
+        // Przekieruj z powiadomieniem o sukcesie
+        return redirect()->route('dashboard.posts')->with('success', 'Post deleted successfully.');
     }
 
     public function edit(Post $post)
     {
+        // Sprawdź, czy zalogowany użytkownik jest właścicielem postu
+        if ($post->user_id != auth()->id()) {
+            return redirect()->route('posts.show', $post)->with('error', 'Nie masz uprawnień do edycji tego postu.');
+        }
 
+        // Użytkownik jest właścicielem postu, więc możemy wyświetlić formularz edycji
         return view('posts.edit', ['post' => $post]);
-
     }
 
     public function update(Request $request, Post $post)
     {
+        // Sprawdź, czy zalogowany użytkownik jest właścicielem postu
+        if ($post->user_id != auth()->id()) {
+            // Użytkownik nie jest właścicielem postu, zwróć błąd 403 (Brak uprawnień)
+            abort(403, 'Unauthorized action.');
+        }
 
         $request->validate([
             'title' => 'required|string|max:255',
@@ -66,8 +79,6 @@ class PostController extends Controller
         $post->update($request->all());
 
         return redirect()->route('posts.show', $post->id)->with('success', 'Post updated successfully.');
-
-
     }
 
 }

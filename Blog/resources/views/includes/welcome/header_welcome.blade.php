@@ -11,6 +11,10 @@
     <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto
         md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
 
+            <li class="mx-4 my-6 md:my-0">
+                <a href="{{ url('posts') }}" class="text-xl hover:text-blue-500 duration-500">Posts</a>
+            </li>
+
             @if (Route::has('login'))
                 @auth
                     <a href="{{ url('/dashboard') }}" class="text-xl hover:text-blue-500 duration-500">
