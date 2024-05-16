@@ -6,10 +6,10 @@
 <!-- resources\views\dashboard.blade.php -->
 
 <div class="container mx-auto py-6">
-    <h1 class="text-2xl font-bold mb-6">All posts</h1>
+    <h1 class="text-2xl font-bold mb-6 text-center">All posts</h1>
 
     <!-- Formularz wyszukiwania -->
-    <form action="{{ route('dashboard.posts') }}" method="GET" class="mb-4">
+    <form action="{{ route('dashboard.posts') }}" method="GET" class="mb-4 flex justify-center">
         <input type="text" name="search" placeholder="Search..." class="px-4 py-2 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
         <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Search</button>
     </form>
@@ -31,9 +31,10 @@
         @endforeach
     </div>
 
-    <!-- Paginacja -->
     {{ $posts->links() }}
 </div>
+
+
 
 @include('includes.footer')
 

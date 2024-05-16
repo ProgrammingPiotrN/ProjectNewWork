@@ -9,21 +9,25 @@ use Illuminate\Support\Facades\Log;
 class CommentController extends Controller
 {
     public function store(Request $request)
-    {
-        $request->validate([
-            'post_id' => 'required|exists:posts,id',
-            'content' => 'required',
-        ]);
+{
+    $request->validate([
+        'post_id' => 'required|exists:posts,id',
+        'content' => 'required',
+    ]);
 
-        $request['content'] = strip_tags($request['content']);
+    // Usunięcie znaczników HTML
+    $content = strip_tags($request->content);
 
+    // Kodowanie znaków specjalnych HTML
+    $content = htmlspecialchars($content);
 
-        $comment = new Comment();
-        $comment->post_id = $request->post_id;
-        $comment->user_id = auth()->id(); // assuming user is logged in
-        $comment->content = strip_tags($request->content); // Remove HTML tags
-        $comment->save();
+    // Zapisanie komentarza
+    $comment = new Comment();
+    $comment->post_id = $request->post_id;
+    $comment->user_id = auth()->id(); // Założenie, że użytkownik jest zalogowany
+    $comment->content = $content;
+    $comment->save();
 
-        return back()->with('success', 'Comment added successfully!');
-    }
+    return back()->with('success', 'Comment added successfully!');
+}
 }

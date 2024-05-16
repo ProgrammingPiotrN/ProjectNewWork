@@ -25,17 +25,7 @@
 
         @include('includes.dashboard.header')
 
-
-
-        <div class="container mx-auto px-4 py-6">
-            @if (session()->has('success'))
-                <div class="container mx-auto">
-                    <div class="bg-green-500 text-white text-center px-4 py-2">
-                        {{ session('success') }}
-                    </div>
-                </div>
-            @endif
-        </div>
+        @include('includes.dashboard.dashboard_content')
 
         @include('includes.footer')
 

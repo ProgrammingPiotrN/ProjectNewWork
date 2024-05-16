@@ -5,8 +5,6 @@
 
 <div class="container py-7 container--narrow lg:w-1/2 mx-auto pl-0 pt-12 lg:pl-20">
 
-
-
     <div class="flex items-center lg:pl-24 pl-4"> <!-- Zmniejszono lewy padding na małych ekranach -->
         <img class="avatar-small rounded-full w-24 h-24 lg:w-32 lg:h-32 pl-2" src="{{ asset('storage/user_photo/' . auth()->user()->user_photo) }}" alt="Avatar" /> <!-- Dostosowano rozmiar zdjęcia avataru -->
         <span class="text-xl pl-4">{{ Auth::user()->username }}</span>
@@ -35,7 +33,9 @@
         @endforeach
     </div>
 
-    {{ $posts->links() }}
+    <div class="flex justify-center mt-8">
+        {{ $posts->links() }}
+    </div>
 
     <div class="flex justify-center lg:justify-start pt-6">
         <a href="{{ route('dashboard') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-2">Return</a>

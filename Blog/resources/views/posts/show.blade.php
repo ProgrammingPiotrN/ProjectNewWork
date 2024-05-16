@@ -7,7 +7,7 @@
     <div class="flex justify-center items-center min-h-screen">
         <div class="container py-8 md:py-20 container--narrow">
             <div class="flex flex-col md:flex-row items-center justify-between pb-2 pt-2 md:pb-8">
-                <h2  class="text-2xl md:text-3xl pl-8">{{ $post->title }}</h2>
+                <h2 class="text-2xl md:text-3xl pl-8">{{ $post->title }}</h2>
                 <div class="flex items-center pl-8 md:pl-8 lg:pl-16 pr-8 pt-6">
                     @if($post->user_id == auth()->id())
                     <a href="{{route('posts.edit', $post->id)}}" class="text-primary mr-2" data-toggle="tooltip" data-placement="top" title="Edit">
@@ -68,8 +68,13 @@
                     <h3 class="text-lg font-semibold mt-4 mb-2">Comments</h3>
                     <ul>
                         @foreach($post->comments as $comment)
-                        <li class="mb-2">
-                            <span class="font-semibold">{{ $comment->user->name }}:</span> {{ $comment->content }}
+                        <li class="mb-2 flex items-center">
+                            <div>
+                                <img src="{{ asset('storage/user_photo/' . $comment->user->user_photo) }}" alt="{{ $comment->user->name }}" class="w-8 h-8 rounded-full mr-4 border border-gray-300">
+                            </div>
+                            <div>
+                                <span class="font-semibold">{{ $comment->user->username }}:</span> {{ $comment->content }}
+                            </div>
                         </li>
                         @endforeach
                     </ul>
@@ -81,6 +86,8 @@
                         <button type="submit" class="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none">Post Comment</button>
                     </form>
                 </div>
+
+
             </div>
 
 

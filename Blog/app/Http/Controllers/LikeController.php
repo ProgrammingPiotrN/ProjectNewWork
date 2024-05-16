@@ -32,21 +32,30 @@ class LikeController extends Controller
 
     public function unlike(Request $request)
     {
-        $like = Like::where('user_id', auth()->id())
-                    ->where('post_id', $request->post_id)
-                    ->first();
+            // Sprawdź, czy użytkownik jest zalogowany
+        if(auth()->check()) {
+            // Znajdź polubienie użytkownika dla danego posta
+            $like = Like::where('user_id', auth()->id())
+                        ->where('post_id', $request->post_id)
+                        ->first();
 
-        if ($like) {
-            $like->delete();
+            // Sprawdź, czy polubienie istnieje
+            if ($like) {
+                // Usuń polubienie
+                $like->delete();
 
-            $post = Post::findOrFail($request->post_id);
-            $post->likes_count -= 1;
-            $post->save();
+                // Zmniejsz liczbę polubień dla posta
+                $post = Post::findOrFail($request->post_id);
+                $post->decrement('likes_count'); // Zmniejszanie wartości kolumny o 1
+                // $post->likes_count -= 1; // Innego sposobu również możesz użyć
+                $post->save();
 
-            return back()->with('success', 'Post unliked successfully!');
+                return back()->with('success', 'Post unliked successfully!');
+            } else {
+                return back()->with('error', 'You have not liked this post!');
+            }
+        } else {
+            return back()->with('error', 'You are not logged in!');
         }
-
-        return back()->with('error', 'You have not liked this post!');
-
     }
 }
