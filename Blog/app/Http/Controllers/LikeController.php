@@ -3,30 +3,50 @@
 namespace App\Http\Controllers;
 
 use App\Models\Like;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {
-    public function store(Request $request)
+    public function like(Request $request)
     {
-        $request->validate([
-            'post_id' => 'required|exists:posts,id',
-        ]);
+        $existingLike = Like::where('user_id', auth()->id())
+                   ->where('post_id', $request->post_id)
+                   ->first();
 
-        $existingLike = Like::where('post_id', $request->post_id)
-                            ->where('user_id', auth()->id()) // Assuming authenticated user
-                            ->first();
-
-        if ($existingLike) {
-            $existingLike->delete();
-            return back()->with('success', 'Post unliked successfully.');
-        } else {
+        if (!$existingLike) {
             $like = new Like();
+            $like->user_id = auth()->id();
             $like->post_id = $request->post_id;
-            $like->user_id = auth()->id(); // Assuming authenticated user
             $like->save();
 
-            return back()->with('success', 'Post liked successfully.');
+            $post = Post::findOrFail($request->post_id);
+            $post->likes_count += 1;
+            $post->save();
+
+            return back()->with('success', 'Post liked successfully!');
+        } else {
+            return back()->with('error', 'You have already liked this post!');
         }
+    }
+
+    public function unlike(Request $request)
+    {
+        $like = Like::where('user_id', auth()->id())
+                    ->where('post_id', $request->post_id)
+                    ->first();
+
+        if ($like) {
+            $like->delete();
+
+            $post = Post::findOrFail($request->post_id);
+            $post->likes_count -= 1;
+            $post->save();
+
+            return back()->with('success', 'Post unliked successfully!');
+        }
+
+        return back()->with('error', 'You have not liked this post!');
+
     }
 }

@@ -12,15 +12,18 @@ class CommentController extends Controller
     {
         $request->validate([
             'post_id' => 'required|exists:posts,id',
-            'content' => 'required|string|max:255',
+            'content' => 'required',
         ]);
+
+        $request['content'] = strip_tags($request['content']);
+
 
         $comment = new Comment();
         $comment->post_id = $request->post_id;
-        $comment->content = $request->content;
-        $comment->user_id = auth()->id(); // Assuming authenticated user
+        $comment->user_id = auth()->id(); // assuming user is logged in
+        $comment->content = strip_tags($request->content); // Remove HTML tags
         $comment->save();
 
-        return back()->with('success', 'Comment added successfully.');
+        return back()->with('success', 'Comment added successfully!');
     }
 }

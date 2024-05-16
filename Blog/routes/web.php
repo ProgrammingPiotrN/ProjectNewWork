@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -45,8 +46,15 @@ Route::get('/posts', [PublicPostController::class, 'index'])->name('welcome.post
 Route::get('/dashboard-posts', [DashboardController::class, 'index'])->name('dashboard.posts')->middleware('auth');
 
 //Comments & likes
-Route::post('/comments', [CommentController::class, 'store'])->name('comments')->middleware('auth');
-Route::post('/likes', [LikeController::class, 'store'])->name('likes.store')->middleware('auth');
 
+Route::post('/like', [LikeController::class, 'like'])->name('like');
+Route::delete('/unlike', [LikeController::class, 'unlike'])->name('unlike');
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
+//Chat
+Route::middleware('auth')->group(function () {
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::post('/chat', [ChatController::class, 'store'])->name('chat.store');
+});
 
 require __DIR__.'/auth.php';

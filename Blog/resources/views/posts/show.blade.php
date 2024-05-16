@@ -39,35 +39,50 @@
                 {!! $post->content !!}
             </div>
 
-            <div class="post bg-white p-4 shadow-md rounded-md mb-4">
-                <!-- Post content here -->
-
-                <!-- Comment form -->
-                <form action="{{ route('comments') }}" method="POST" class="mt-4">
-                    @csrf
-                    <input type="hidden" name="post_id" value="{{ $post->id }}">
-                    <textarea name="comment" placeholder="Add a comment..." rows="3" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"></textarea>
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md mt-2 hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Comment</button>
-                </form>
-
-                <!-- Display comments -->
-                <div class="mt-4">
-                    <h3 class="text-lg font-semibold">Comments:</h3>
-                    @foreach ($post->comments as $comment)
-                        <div class="border-t border-gray-200 mt-2">
-                            <p class="text-gray-800">{{ $comment->content }}</p>
-                            <p class="text-sm text-gray-600">By: {{ $comment->user->name }}</p>
-                        </div>
-                    @endforeach
+            <!-- Post Card -->
+            <div class="max-w-md mx-auto bg-white shadow-md rounded-md overflow-hidden">
+                <div class="p-4">
+                    <div class="flex items-center justify-between mt-4">
+                        <!-- Like Button -->
+                        <form action="{{ route('like') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="post_id" value="{{ $post->id }}">
+                            <button type="submit" class="flex items-center text-gray-600 hover:text-red-500 focus:outline-none">
+                                <svg class="w-5 h-5 mr-1 fill-current" viewBox="0 0 24 24">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                                <span>{{ $post->likes()->count() }}</span>
+                            </button>
+                        </form>
+                        <!-- Comment Button -->
+                        <button class="flex items-center text-gray-600 hover:text-blue-500 focus:outline-none">
+                            <svg class="w-5 h-5 mr-1 fill-current" viewBox="0 0 24 24">
+                                <path d="M21 4H3c-1.1 0-1.99.9-1.99 2L1 18c0 1.1.89 2 1.99 2H21c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM3 18V6h18l.01 11H3z"/>
+                            </svg>
+                            <span>{{ $post->comments()->count() }}</span>
+                        </button>
+                    </div>
                 </div>
-
-                <!-- Like button -->
-                <form action="{{ route('likes.store') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="post_id" value="{{ $post->id }}">
-                    <button type="submit" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md mt-2 hover:bg-gray-300 focus:outline-none focus:bg-gray-300">Like</button>
-                </form>
+                <!-- Comments Section -->
+                <div class="px-4 pb-2">
+                    <h3 class="text-lg font-semibold mt-4 mb-2">Comments</h3>
+                    <ul>
+                        @foreach($post->comments as $comment)
+                        <li class="mb-2">
+                            <span class="font-semibold">{{ $comment->user->name }}:</span> {{ $comment->content }}
+                        </li>
+                        @endforeach
+                    </ul>
+                    <!-- Add Comment Form -->
+                    <form action="{{ route('comments.store') }}" method="POST" class="mt-4">
+                        @csrf
+                        <input type="hidden" name="post_id" value="{{ $post->id }}">
+                        <textarea name="content" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" placeholder="Add a comment..."></textarea>
+                        <button type="submit" class="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none">Post Comment</button>
+                    </form>
+                </div>
             </div>
+
 
 
             <div class="flex justify-end mt-4 md:mt-6 pr-8">
