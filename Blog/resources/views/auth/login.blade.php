@@ -7,7 +7,7 @@
             <img class="mx-auto h-24 w-auto" src="{{ asset('assets/img/logo.png') }}" alt="" />
 
             <h2 class="my-3 text-center text-3xl font-bold tracking-tight text-gray-900">
-                Login
+                {{ __('login_register.login') }}
             </h2>
 
 
@@ -15,7 +15,7 @@
                 @csrf
 
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+                    <label for="email" class="block text-sm font-medium text-gray-700">{{ __('login_register.email') }}:</label>
                     <div class="mt-1">
                         <input name="email" type="email" autocomplete="email-address"
                             class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" />
@@ -26,7 +26,7 @@
                 </div>
 
                 <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
+                    <label for="password" class="block text-sm font-medium text-gray-700">{{ __('login_register.password') }}:</label>
                     <div class="mt-1">
                         <input name="password" type="password" autocomplete="password"
                             class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" />
@@ -38,7 +38,7 @@
 
                 <div>
                     <button type="submit"
-                        class="flex w-full justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-black shadow-sm hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-2">Login
+                        class="flex w-full justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-black shadow-sm hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-2">{{ __('login_register.login') }}
                         </button>
                 </div>
             </form>

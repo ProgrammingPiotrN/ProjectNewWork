@@ -7,7 +7,7 @@
             <img class="mx-auto h-24 w-auto" src="{{ asset('assets/img/logo.png') }}" alt="" />
 
             <h2 class="my-3 text-center text-3xl font-bold tracking-tight text-gray-900">
-                Sign up
+                {{ __('login_register.sign_up') }}
             </h2>
 
 
@@ -15,7 +15,7 @@
                 @csrf
 
                 <div>
-                    <label for="username" class="block text-sm font-medium text-gray-700">Username:</label>
+                    <label for="username" class="block text-sm font-medium text-gray-700">{{ __('login_register.username') }}:</label>
                     <div class="mt-1">
                         <input name="username" type="name"
                             class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" />
@@ -26,7 +26,7 @@
                 </div>
 
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+                    <label for="email" class="block text-sm font-medium text-gray-700">{{ __('login_register.email') }}:</label>
                     <div class="mt-1">
                         <input name="email" type="email" autocomplete="email-address"
                             class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" />
@@ -37,7 +37,7 @@
                 </div>
 
                 <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
+                    <label for="password" class="block text-sm font-medium text-gray-700">{{ __('login_register.password') }}:</label>
                     <div class="mt-1">
                         <input name="password" type="password" autocomplete="password"
                             class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" />
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="mt-4">
-                    <label for="password_confirmation">Confirm password:</label>
+                    <label for="password_confirmation" class="block text-sm font-medium text-gray-700">{{ __('login_register.confirm_password') }}:</label>
 
                     <input id="password_confirmation" class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm"
                                     type="password"
@@ -61,14 +61,13 @@
 
                  <div class="flex justify-center mt-4">
                     <a class="mr-2 flex justify-center mt-4 underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    {{ __('login_register.already') }}
                     </a>
                 </div>
 
                 <div>
                     <button type="submit"
-                        class="flex w-full justify-center rounded-md border border-transparent bg-blue py-2 px-4 text-sm font-medium text-black shadow-sm hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-2">Register
-                        Account
+                        class="flex w-full justify-center rounded-md border border-transparent bg-blue py-2 px-4 text-sm font-medium text-black shadow-sm hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-blue focus:ring-offset-2">{{__('login_register.register_button')}}
                         </button>
                 </div>
             </form>

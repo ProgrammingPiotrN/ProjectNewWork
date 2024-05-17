@@ -32,7 +32,7 @@
                     <img src="{{ asset('storage/user_photo/' . $post->user->user_photo) }}" alt="{{ $post->user->name }}" class="w-8 h-8 rounded-full mr-2">
                     @endif
                 </a>
-                Posted by <a href="#" class="text-gray-700">{{ $post->user->username }}</a> on {{ $post->created_at->format('d/m/Y') }}
+                {{ __('posts.posted_by') }} <a href="#" class="text-gray-700">{{ $post->user->username }}</a> {{ __('posts.on') }} {{ $post->created_at->format('d/m/Y') }}
             </p>
 
             <div class="body-content pl-8 mt-1">
@@ -65,7 +65,7 @@
                 </div>
                 <!-- Comments Section -->
                 <div class="px-4 pb-2">
-                    <h3 class="text-lg font-semibold mt-4 mb-2">Comments</h3>
+                    <h3 class="text-lg font-semibold mt-4 mb-2">{{ __('posts.comments') }}</h3>
                     <ul>
                         @foreach($post->comments as $comment)
                         <li class="mb-2 flex items-center">
@@ -82,8 +82,8 @@
                     <form action="{{ route('comments.store') }}" method="POST" class="mt-4">
                         @csrf
                         <input type="hidden" name="post_id" value="{{ $post->id }}">
-                        <textarea name="content" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" placeholder="Add a comment..."></textarea>
-                        <button type="submit" class="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none">Post Comment</button>
+                        <textarea name="content" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" placeholder="{{ __('posts.add_comment') }}"></textarea>
+                        <button type="submit" class="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md focus:outline-none">{{ __('buttons.post_comment') }}</button>
                     </form>
                 </div>
 
@@ -93,7 +93,7 @@
 
 
             <div class="flex justify-end mt-4 md:mt-6 pr-8">
-                <a href="{{ url('profile/' . Auth::user()->id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded m-2">Return</a>
+                <a href="{{ url('profile/' . Auth::user()->id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded m-2">{{ __('buttons.return') }}</a>
             </div>
         </div>
     </div>

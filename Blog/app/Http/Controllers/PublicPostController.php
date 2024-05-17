@@ -13,6 +13,7 @@ class PublicPostController extends Controller
 {
     public function index(Request $request)
     {
+
         $query = Post::query();
 
         if ($request->has('search')) {

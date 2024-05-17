@@ -20,8 +20,8 @@
         </div>
         <form id="message-form" action="{{ route('chat.store') }}" method="POST" class="flex">
             @csrf
-            <input type="text" name="content" id="content" class="flex-1 p-4 bg-gray-200 rounded-full" placeholder="Type your message...">
-            <button type="submit" class="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Send</button>
+            <input type="text" name="content" id="content" class="flex-1 p-4 bg-gray-200 rounded-full" placeholder="{{ __('chat.message') }}">
+            <button type="submit" class="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{ __('chat.send') }}</button>
         </form>
     </div>
 </div>

@@ -5,11 +5,7 @@
         </div>
         <div class="md:w-1/2 p-8">
             <p class="text-left md:text-left text-lg">
-                Welcome to Blog IT.
-                Here you will find the
-                answer to every question
-                from the IT world and the solution
-                to the problem. Share your knowledge.
+                {{ __('welcome.welcome') }}
             </p>
         </div>
     </div>

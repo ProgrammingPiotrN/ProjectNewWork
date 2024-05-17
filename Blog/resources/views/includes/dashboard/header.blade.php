@@ -12,33 +12,33 @@
     <ul class="md:flex md:items-center z-10 md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
         @auth
         <li class="mx-4 my-6 md:my-0">
-            <a href="{{ url('chat') }}" class="text-xl hover:text-blue-500 duration-500">Chat</a>
+            <a href="{{ url('chat') }}" class="text-xl hover:text-blue-500 duration-500">{{ __('login_register.chat') }}</a>
         </li>
         <li class="mx-4 my-6 md:my-0">
-            <a href="{{ url('dashboard-posts') }}" class="text-xl hover:text-blue-500 duration-500">Posts</a>
+            <a href="{{ url('dashboard-posts') }}" class="text-xl hover:text-blue-500 duration-500">{{ __('login_register.posts') }}</a>
         </li>
         <li class="mx-4 my-6 md:my-0">
-            <a href="{{ url('profile/' . Auth::user()->id) }}" class="text-xl hover:text-blue-500 duration-500">Profile</a>
+            <a href="{{ url('profile/' . Auth::user()->id) }}" class="text-xl hover:text-blue-500 duration-500">{{ __('login_register.profile') }}</a>
         </li>
         @else
         <li class="mx-4 my-6 md:my-0">
-            <a href="{{ route('login') }}" class="text-xl hover:text-blue-500 duration-500">Log in</a>
+            <a href="{{ route('login') }}" class="text-xl hover:text-blue-500 duration-500">{{ __('login_register.login') }}</a>
         </li>
         @if (Route::has('register'))
         <li class="mx-4 my-6 md:my-0">
-            <a href="{{ route('register') }}" class="text-xl hover:text-blue-500 duration-500">Register</a>
+            <a href="{{ route('register') }}" class="text-xl hover:text-blue-500 duration-500">{{ __('login_register.register') }}</a>
         </li>
         @endif
         @endauth
 
         <li class="mx-4 my-6 md:my-0">
-            <a href="{{ route('posts.create') }}" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Create post</a>
+            <a href="{{ route('posts.create') }}" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">{{ __('login_register.create_post') }}</a>
         </li>
 
         <li class="">
             <form method="POST" action="{{ route('logout') }}" style="margin-block-end: 0">
                 @csrf
-                <button type="submit" class="text-blue-500 hover:underline py-2 px-4">Log out</button>
+                <button type="submit" class="text-blue-500 hover:underline py-2 px-4">{{ __('login_register.log_out') }}</button>
             </form>
         </li>
     </ul>

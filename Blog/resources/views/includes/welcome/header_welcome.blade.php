@@ -12,21 +12,21 @@
         md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
 
             <a href="{{ url('/') }}" class="text-xl hover:text-blue-500 duration-500">
-                Welcome
+                {{ __('login_register.welcome') }}
             </a>
             <li class="mx-4 my-6 md:my-0">
-                <a href="{{ url('posts') }}" class="text-xl hover:text-blue-500 duration-500">Posts</a>
+                <a href="{{ url('posts') }}" class="text-xl hover:text-blue-500 duration-500">{{ __('login_register.posts') }}</a>
             </li>
 
             @if (Route::has('login'))
                 @auth
                     <a href="{{ url('/dashboard') }}" class="text-xl hover:text-blue-500 duration-500">
-                        Dashboard
+                        {{ __('login_register.dashboard') }}
                     </a>
                 @else
                 <li class="mx-4 my-6 md:my-0">
                     <a href="{{ route('login') }}" class="text-xl hover:text-blue-500 duration-500">
-                        Log in
+                       {{ __('login_register.login') }}
                     </a>
                 </li>
 
@@ -34,7 +34,7 @@
                     @if (Route::has('register'))
                         <li class="mx-4 my-6 md:my-0">
                             <a  href="{{ route('register') }}" class="text-xl hover:text-blue-500 duration-500">
-                            Register
+                            {{ __('login_register.register') }}
                             </a>
                         </li>
 

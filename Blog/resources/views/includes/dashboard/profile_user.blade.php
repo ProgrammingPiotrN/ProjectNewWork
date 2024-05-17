@@ -12,7 +12,7 @@
             @csrf
             @if(auth()->check())
             <a href="{{ route('photo') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center ml-4 md:ml-0" style="z-index: 999;">
-                Manage Avatar
+                {{ __('profil.manage_photo') }}
             </a>
         @endif
         </form>
@@ -38,7 +38,7 @@
     </div>
 
     <div class="flex justify-center lg:justify-start pt-6">
-        <a href="{{ route('dashboard') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-2">Return</a>
+        <a href="{{ route('dashboard') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-2">{{ __('buttons.return') }}</a>
     </div>
     <div class="px-4 py-6">
         @if (session()->has('success'))

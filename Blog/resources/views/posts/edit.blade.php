@@ -9,7 +9,7 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-4">
-                    <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+                    <label for="title" class="block text-gray-700 text-sm font-bold mb-2">{{ __('posts.title') }}</label>
                     <input id="title" type="text" name="title" class="pt-2 pb-2 pr-2 pl-2 form-input w-full border border-black @error('title') @enderror" value="{{ old('title', $post->title) }}" autofocus>
                     @error('title')
                         <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="content" class="block text-gray-700 text-sm font-bold mb-2">Content</label>
+                    <label for="content" class="block text-gray-700 text-sm font-bold mb-2">{{ __('posts.content') }}</label>
                     <textarea id="content" name="content" class="pt-2 pb-2 pr-2 pl-2 form-textarea w-full border border-black @error('content') @enderror" rows="6">{{ old('content', $post->content) }}</textarea>
                     @error('content')
                         <p class="text-red-500 text-xs italic mt-1">{{ $message }}</p>
@@ -25,8 +25,8 @@
                 </div>
 
                 <div class="flex items-center justify-end">
-                    <a href="{{ route('posts.show', $post->id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded m-2">Return</a>
-                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Update</button>
+                    <a href="{{ route('posts.show', $post->id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded m-2">{{ __('buttons.return') }}</a>
+                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">{{ __('buttons.update') }}</button>
                 </div>
             </form>
         </div>

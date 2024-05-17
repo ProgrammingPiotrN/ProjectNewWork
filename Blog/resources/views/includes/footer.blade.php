@@ -8,7 +8,7 @@
     <div class="p-10 text-black">
         <div class="max-w-7xl mx-auto text-center">
             <div class="mb-5">
-                Copyright & Designed by <a href="https://github.com/ProgrammingPiotrN"><strong><span>Piotr Nawrocki</span></strong></a>. All Rights Reserved
+                {{ __('footer.copyright') }} <a href="https://github.com/ProgrammingPiotrN"><strong><span>Piotr Nawrocki</span></strong></a> {{ __('footer.reserved') }}
             </div>
         </div>
     </div>
