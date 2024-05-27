@@ -9,7 +9,7 @@ return [
     'email' => 'Email',
     'password' => 'Hasło',
     'confirm_password' => 'Powtórz hasło',
-    "sign_up" => 'Rejestracja',
+    'sign_up' => 'Rejestracja',
     'username' => 'Nazwa użytkownika',
     'already' => 'Masz już konto?',
     'register_button' => 'Zarejestruj',

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -27,13 +26,13 @@ class PostController extends Controller
 
         $post = Post::create($post);
 
-
         return redirect("/posts/{$post->id}")->with('success', 'New post successfully created.');
     }
 
     public function show(Post $post)
     {
-        $post['content'] = Str::markdown($post->content);;
+        $post['content'] = Str::markdown($post->content);
+        ;
         return view('posts.show', ['post' => $post]);
     }
 
@@ -80,5 +79,4 @@ class PostController extends Controller
 
         return redirect()->route('posts.show', $post->id)->with('success', 'Post updated successfully.');
     }
-
 }

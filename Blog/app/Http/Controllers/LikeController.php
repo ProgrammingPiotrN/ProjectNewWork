@@ -32,8 +32,8 @@ class LikeController extends Controller
 
     public function unlike(Request $request)
     {
-            // Sprawdź, czy użytkownik jest zalogowany
-        if(auth()->check()) {
+        // Sprawdź, czy użytkownik jest zalogowany
+        if (auth()->check()) {
             // Znajdź polubienie użytkownika dla danego posta
             $like = Like::where('user_id', auth()->id())
                         ->where('post_id', $request->post_id)

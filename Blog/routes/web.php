@@ -57,4 +57,4 @@ Route::middleware('auth')->group(function () {
     Route::post('/chat', [ChatController::class, 'store'])->name('chat.store');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

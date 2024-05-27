@@ -5,13 +5,14 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -23,8 +24,6 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
-
 
     /**
      * The attributes that should be hidden for serialization.
@@ -49,15 +48,18 @@ class User extends Authenticatable
         ];
     }
 
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany(Post::class, 'user_id');
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
-   }
+    }
 
-   public function likes(){
-    return $this->hasMany(Comment::class);
+    public function likes()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
